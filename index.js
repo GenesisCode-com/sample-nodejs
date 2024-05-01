@@ -17,8 +17,14 @@ const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+
 })
 
+app.get('/trk2', (req, res) => {
+  
+  res.redirect(301, 'https://searchads2024.gotrackier.com/t/Ml8xMg/');
+  
+});
 app.get('/trk', (req, res) => {
   // Lấy URL từ yêu cầu
   const reqUrl = req.url;
