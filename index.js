@@ -20,8 +20,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/trk', (req, res) => {
-    // Chuyển hướng sang trang web của Google
-    res.redirect(301, 'https://www.google.com');
+  // Lấy URL từ yêu cầu
+  const reqUrl = req.url;
+  const index = reqUrl.indexOf('&url=');
+  const urlParam = reqUrl.substring(index + 5);
+  
+  res.redirect(301, urlParam);
 });
 
 
