@@ -2,34 +2,27 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
-const http = require('http');
+// var LoremIpsum = require('lorem-ipsum').LoremIpsum;
 
-// const server = http.createServer((req, res) => {
-//   // Xử lý yêu cầu từ trình duyệt
-//   if (req.url === '/trk') {
-//     // Chuyển hướng người dùng sang trang web của Google
-//     res.writeHead(302, { 'Location': 'https://www.google.com' });
-//     res.end();
-//   } else {
-//     // Trả về trang không tìm thấy nếu đường dẫn không phù hợp
-//     res.writeHead(404);
-//     res.end();
+// var lorem = new LoremIpsum({
+//   sentencesPerParagraph: {
+//     max: 8,
+//     min: 4
+//   },
+//   wordsPerSentence: {
+//     max: 16,
+//     min: 4
 //   }
 // });
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.get('/trk', (req, res) => {
+    // Chuyển hướng sang trang web của Google
+    res.redirect(301, 'https://www.google.com');
+});
 
-// var http = require('http');
 
-http.createServer(function (req, res) {
-  if (req.url === '/trk') {
-    // Chuyển hướng người dùng sang trang web của Google
-    res.writeHead(302, { 'Location': 'https://www.google.com' });
-    res.end();
-  } else {
-    // Trả về trang không tìm thấy nếu đường dẫn không phù hợp
-    res.writeHead(404);
-    res.end();
-  }
-}).listen(port);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
