@@ -19,4 +19,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.get('/trk', (req, res) => {
+  // Chuyển hướng sang trang web của Google
+  res.redirect(301, 'https://www.google.com');
+});
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
