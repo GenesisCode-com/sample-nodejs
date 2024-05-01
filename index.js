@@ -20,19 +20,16 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/trk2', (req, res) => {
+app.get('/trk1', (req, res) => {
   
   res.redirect(301, 'https://searchads2024.gotrackier.com/t/Ml8xMg/');
   
 });
 app.get('/trk', (req, res) => {
-  // Lấy URL từ yêu cầu
-  const reqUrl = req.url;
-  const index = reqUrl.indexOf('&url=');
-  const urlParam = reqUrl.substring(index + 5);
-  
-  res.redirect(301, urlParam);
+  // Chuyển hướng người dùng sang trang web của Google
+  res.redirect(301, 'https://www.google.com');
 });
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
