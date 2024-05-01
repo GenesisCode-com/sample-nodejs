@@ -2,21 +2,22 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
-// var LoremIpsum = require('lorem-ipsum').LoremIpsum;
+// Middleware để thiết lập các tiêu đề HTTP
+app.use((req, res, next) => {
+  // Thiết lập tiêu đề Cache-Control
+  res.set('Cache-Control', 'public, max-age=3600'); // Cache trong 1 giờ
 
-// var lorem = new LoremIpsum({
-//   sentencesPerParagraph: {
-//     max: 8,
-//     min: 4
-//   },
-//   wordsPerSentence: {
-//     max: 16,
-//     min: 4
-//   }
-// });
+  // Thiết lập tiêu đề ETag
+  res.set('ETag', '123456'); // Thay '123456' bằng giá trị ETag thích hợp
+
+  // Thiết lập tiêu đề Last-Modified
+  res.set('Last-Modified', new Date().toUTCString());
+
+  next();
+});
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('bearkd fast')
 
 })
 
