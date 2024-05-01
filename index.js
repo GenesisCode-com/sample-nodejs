@@ -23,6 +23,13 @@ const http = require('http');
 // var http = require('http');
 
 http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World!');
+  if (req.url === '/trk') {
+    // Chuyển hướng người dùng sang trang web của Google
+    res.writeHead(302, { 'Location': 'https://www.google.com' });
+    res.end();
+  } else {
+    // Trả về trang không tìm thấy nếu đường dẫn không phù hợp
+    res.writeHead(404);
+    res.end();
+  }
 }).listen(port);
